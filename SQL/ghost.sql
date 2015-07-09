@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-04-11 06:02:56
+Date: 2015-07-09 17:11:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,12 +67,15 @@ CREATE TABLE `characters` (
   `c_vit` int(4) NOT NULL,
   `c_int` int(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of characters
 -- ----------------------------
-INSERT INTO `characters` VALUES ('17', '1', '0', '2', '', '1', '9010011', '9110011', '1', '0', '255', '31', '31', '15', '15', '0', '0', '3', '3', '3', '3');
+INSERT INTO `characters` VALUES ('20', '2', '0', 'fdffd', '', '1', '9010011', '9110011', '1', '0', '255', '31', '31', '15', '15', '0', '0', '3', '3', '3', '3');
+INSERT INTO `characters` VALUES ('21', '1', '0', 'ggfg', '', '1', '9010011', '9110011', '1', '0', '255', '31', '31', '15', '15', '0', '0', '3', '3', '3', '3');
+INSERT INTO `characters` VALUES ('22', '1', '0', 'fgff', '', '1', '9010041', '9110031', '1', '0', '255', '31', '31', '15', '15', '0', '0', '3', '3', '3', '3');
+INSERT INTO `characters` VALUES ('23', '1', '0', '25456', '', '2', '9010032', '9110022', '1', '0', '255', '31', '31', '15', '15', '0', '0', '3', '3', '3', '3');
 
 -- ----------------------------
 -- Table structure for `items`
@@ -82,11 +85,17 @@ CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL,
   `itemId` int(8) NOT NULL,
-  `quantity` int(4) NOT NULL DEFAULT '1',
-  `slot` int(4) NOT NULL,
+  `quantity` smallint(4) NOT NULL DEFAULT '1',
+  `slot` int(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of items
 -- ----------------------------
+INSERT INTO `items` VALUES ('1', '21', '8010011', '1', '255');
+INSERT INTO `items` VALUES ('2', '21', '8110011', '1', '254');
+INSERT INTO `items` VALUES ('3', '22', '7940011', '1', '255');
+INSERT INTO `items` VALUES ('4', '22', '8120011', '1', '249');
+INSERT INTO `items` VALUES ('5', '23', '8030011', '1', '255');
+INSERT INTO `items` VALUES ('6', '23', '8120012', '1', '249');

@@ -7,6 +7,7 @@ using GhostServer.net.Packet;
 using GhostServer.tools;
 using GhostServer.tools.data;
 using System;
+using GhostServer.constants;
 
 namespace GhostServer.net.handling
 {
@@ -71,12 +72,7 @@ namespace GhostServer.net.handling
             int hair = lea.readInt();
             int weapon = lea.readInt();
             int armor = lea.readInt();
-            int top = 0;
-            int face = 0;
-            int hat = 0;
-
-            int[] equips = new int[] { weapon, armor, top, face, hat, eyes, hair };
-
+            
             Character chr = new Character();
 
             chr.AccountID = gc.Account.ID;
@@ -96,6 +92,9 @@ namespace GhostServer.net.handling
             chr.MaxHp = 31;
             chr.Sp = 15;
             chr.MaxSp = 15;
+
+            chr.Items.Add(new Item(weapon, (byte) ItemTypeConstants.EquipType.Weapon));
+            chr.Items.Add(new Item(armor, (byte)ItemTypeConstants.EquipType.Dress));
 
             chr.Save();
 

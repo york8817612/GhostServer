@@ -3,6 +3,7 @@ using GhostServer.net;
 using GhostServer.client;
 using GhostServer.client.Characters;
 using System.Collections.Generic;
+using GhostServer.constants;
 
 namespace GhostServer.net.Packet
 {
@@ -100,15 +101,48 @@ namespace GhostServer.net.Packet
             plew.write(0);
             plew.writeShort((short)(c != null ? 1 : 0));
             plew.writeShort((short)(c != null ? 1 : 0));
-            plew.writeInt(c != null ? 8010101 : 0); // 武器[weapon]8010101
-            plew.writeInt(c != null ? c.Hair : 0); // 頭髮[hair]9010011
-            plew.writeInt(c != null ? 8493122 : 0); // 披風[mantle]8493122
-            plew.writeInt(c != null ? 9010011 : 0); // 帽子[hat]8610011
-            plew.writeInt(c != null ? 8610021 : 0); // 臉下[face2]9410021
-            plew.writeInt(c != null ? 8710013 : 0); // 臉上[face]8710013
-            plew.writeInt(c != null ? 9510081 : 0); // 服裝[outfit]9510081
+
+            Dictionary<ItemTypeConstants.EquipType, int> eq = new Dictionary<ItemTypeConstants.EquipType, int>();
+            if (c != null)
+            {
+                foreach (Item it in c.Items)
+                {
+                    switch (it.Slot)
+                    {
+                        case (byte)ItemTypeConstants.EquipType.Weapon:
+                            eq.Add(ItemTypeConstants.EquipType.Weapon, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Dress:
+                            eq.Add(ItemTypeConstants.EquipType.Dress, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Hat:
+                            eq.Add(ItemTypeConstants.EquipType.Hat, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Face:
+                            eq.Add(ItemTypeConstants.EquipType.Face, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Face2:
+                            eq.Add(ItemTypeConstants.EquipType.Face2, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Mantle:
+                            eq.Add(ItemTypeConstants.EquipType.Mantle, it.ItemID);
+                            break;
+                        case (byte)ItemTypeConstants.EquipType.Outfit:
+                            eq.Add(ItemTypeConstants.EquipType.Outfit, it.ItemID);
+                            break;
+                    }
+                }
+            }
+            
             plew.writeInt(c != null ? c.Eyes : 0); // 眼睛[eye]9110011
-            plew.writeInt(c != null ? 9510081 : 0); // 衣服[dress]8160351
+            plew.writeInt(c != null ? c.Hair : 0); // 頭髮[hair]9010011
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Weapon) ? eq[ItemTypeConstants.EquipType.Weapon] : 0); // 武器[weapon]8010101
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Dress) ? eq[ItemTypeConstants.EquipType.Dress] : 0); // 披風[mantle]8493122
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Hat) ? eq[ItemTypeConstants.EquipType.Hat] : 0); // 帽子[hat]8610011
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Face) ? eq[ItemTypeConstants.EquipType.Face] : 0); // 臉下[face2]9410021
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Face2) ? eq[ItemTypeConstants.EquipType.Face2] : 0); // 臉上[face]8710013
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Mantle) ? eq[ItemTypeConstants.EquipType.Mantle] : 0); // 服裝[outfit]9510081
+            plew.writeInt(eq.ContainsKey(ItemTypeConstants.EquipType.Outfit) ? eq[ItemTypeConstants.EquipType.Outfit] : 0); // 衣服[dress]8160351
         }
     }
 }

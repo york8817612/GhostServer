@@ -38,6 +38,10 @@ namespace GhostServer.client
         {
             get
             {
+                if (maxPerStack == 0)
+                {
+                    maxPerStack = 1;
+                }
                 return maxPerStack;
             }
             set
@@ -65,11 +69,12 @@ namespace GhostServer.client
             }
         }
 
-        public Item(int itemID, short quantity = 1, bool equipped = false)
+        public Item(int itemID, byte slot, short quantity = 1)
         {
             this.ItemID = itemID;
             this.MaxPerStack = this.MaxPerStack;
             this.Quantity = quantity;
+            this.Slot = slot;
         }
 
         public Item(dynamic datum)
@@ -80,7 +85,7 @@ namespace GhostServer.client
             this.ItemID = datum.itemId;
             this.MaxPerStack = 1;
             this.Quantity = datum.quantity;
-            this.Slot = datum.slot;
+            this.Slot = (byte)datum.slot;
         }
 
         public void Save()
@@ -112,14 +117,6 @@ namespace GhostServer.client
 
             this.Assigned = false;
         }
-
-        public enum ItemType : byte
-        {
-            Equip1,
-            Equip2,
-            Use,
-            etc,
-            Pet
-        }
+        
     }
 }
