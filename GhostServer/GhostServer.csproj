@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3ED25464-D3EA-4EA0-99D8-06388B90C1DA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GhostServer</RootNamespace>
+    <AssemblyName>GhostServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client\Account.cs" />
+    <Compile Include="client\Characters\Character.cs" />
+    <Compile Include="client\Characters\CharacterItems.cs" />
+    <Compile Include="client\GhostClient.cs" />
+    <Compile Include="client\Item.cs" />
+    <Compile Include="constants\ServerConstants.cs" />
+    <Compile Include="database\Database.cs" />
+    <Compile Include="database\Datum.cs" />
+    <Compile Include="database\Meta.cs" />
+    <Compile Include="database\RowNotUniqueException.cs" />
+    <Compile Include="net\GhostSession.cs" />
+    <Compile Include="net\handling\Chars.cs" />
+    <Compile Include="net\handling\Login.cs" />
+    <Compile Include="net\handling\ServerHandler.cs" />
+    <Compile Include="net\Packet\Chars.cs" />
+    <Compile Include="net\Packet\Login.cs" />
+    <Compile Include="net\ReceiveOperationCode.cs" />
+    <Compile Include="net\SendOperationCode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="server\CharServer.cs" />
+    <Compile Include="server\GameServer.cs" />
+    <Compile Include="server\LoginServer.cs" />
+    <Compile Include="server\ServerType.cs" />
+    <Compile Include="server\World.cs" />
+    <Compile Include="server\Worlds.cs" />
+    <Compile Include="tools\Application.cs" />
+    <Compile Include="tools\data\ByteArrayByteStream.cs" />
+    <Compile Include="tools\data\LittleEndianAccessor.cs" />
+    <Compile Include="tools\data\PacketLittleEndianWriter.cs" />
+    <Compile Include="tools\HackException.cs" />
+    <Compile Include="tools\Log.cs" />
+    <Compile Include="tools\LogLevel.cs" />
+    <Compile Include="tools\NoAccountException.cs" />
+    <Compile Include="tools\Randomizer.cs" />
+    <Compile Include="tools\SettingReadException.cs" />
+    <Compile Include="tools\Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="net\handling\Game\" />
+    <Folder Include="net\Packet\Game\" />
+    <Folder Include="provider\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
