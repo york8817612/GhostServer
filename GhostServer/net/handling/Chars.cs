@@ -78,6 +78,7 @@ namespace GhostServer.net.handling
             chr.AccountID = gc.Account.ID;
             chr.WorldID = gc.World.ID;
             chr.Name = name;
+            chr.Title = "江湖人";
             chr.Level = 1;
             chr.Class = 0;
             chr.ClassLV = 0xFF;

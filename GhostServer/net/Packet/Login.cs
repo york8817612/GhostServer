@@ -32,33 +32,32 @@ namespace GhostServer.net.Packet
             return plew.getPacket();
         }
 
-        public static byte[] ServerList_Ack(byte serverId, string serverName, int[] loads)
+        public static byte[] ServerList_Ack(byte serverId, int[] loads)
         {
             PacketLittleEndianWriter plew = new PacketLittleEndianWriter();
 
             plew.write((byte)SendOperationCode.Login.SERVERLIST_ACK);
-            plew.write(serverId);
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 13; i++)
             {
                 plew.write(0xFF);
             }
             plew.writeInt(1); // 伺服器數量
-            plew.writeShort(0); // 伺服器順序
+            plew.writeShort(serverId); // 伺服器順序
             plew.writeInt((byte)loads.Length); // 頻道數量
 
             int id = 0;
 
-            foreach (int chLoad in loads)
+            for (byte i = 1; i <= 18; i++)
             {
                 plew.writeShort((short)(id + 1));
                 plew.writeShort((short)(id + 1));
                 plew.writeGhostAsciiString("127.0.0.1");
                 plew.writeInt(14101 + id);
-                plew.writeInt(chLoad); // 玩家數量
+                plew.writeInt(1); // 玩家數量
                 plew.writeInt(400); // 頻道人數上限
                 plew.writeInt(12); // 標章類型
                 plew.writeInt(0);
-                plew.write(1);
+                plew.write((byte) (loads[i - 1] != 0 ? 1 : 2));
                 plew.writeInt(14199);
                 id++;
             }

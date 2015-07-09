@@ -60,7 +60,7 @@ namespace GhostServer.net.handling
 
         public static void ServerList_Req(LittleEndianAccessor lea, GhostClient gc)
         {
-            gc.SendPacket(net.Packet.Login.ServerList_Ack(0, "000", new int[] { 1, 1}));
+            gc.SendPacket(net.Packet.Login.ServerList_Ack(0, new int[] { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
         }
 
         public static void Game_Req(LittleEndianAccessor lea, GhostClient gc)

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-07-09 17:11:21
+Date: 2015-07-09 21:53:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,8 +48,8 @@ CREATE TABLE `characters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accountId` int(11) NOT NULL,
   `worldId` int(1) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `title` varchar(20) NOT NULL,
+  `name` varchar(20) CHARACTER SET big5 NOT NULL,
+  `title` varchar(20) CHARACTER SET big5 NOT NULL,
   `gender` int(1) NOT NULL DEFAULT '1',
   `hair` int(8) NOT NULL DEFAULT '0',
   `eyes` int(8) NOT NULL DEFAULT '0',

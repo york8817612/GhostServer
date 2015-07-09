@@ -84,7 +84,7 @@ namespace GhostServer.database
         {
             get
             {
-                return string.Format("server={0}; database={1}; uid={2}; password={3}; convertzerodatetime=yes;",
+                return string.Format("server={0}; database={1}; uid={2}; password={3}; convertzerodatetime=yes; CharSet=big5;",
                     Database.Host,
                     Database.Schema,
                     Database.Username,
