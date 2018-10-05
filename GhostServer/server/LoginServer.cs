@@ -54,7 +54,7 @@ namespace GhostServer.server
 
                 TcpListener Listener = new TcpListener(IPAddress.Any, PORT);
                 Listener.Start();
-                Log.Success("登入伺服器 {0} 已經上線。", Listener.LocalEndpoint);
+                Log.Success("Log {0} 已經上線。", Listener.LocalEndpoint);
 
                 foreach (string worldName in Settings.GetBlocksFromBlock("Worlds", 1))
                 {

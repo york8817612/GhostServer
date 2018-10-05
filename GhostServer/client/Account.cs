@@ -90,7 +90,7 @@ namespace GhostServer.client
                 this.Assigned = true;
             }
 
-            Log.Inform("帳號 '{0}' 已經儲存到資料庫。", this.Username);
+            Log.Inform("Username '{0}' 已經儲存到資料庫。", this.Username);
         }
 
     }
